@@ -9,6 +9,9 @@ import Foundation
 
 final class LoginViewModel: ObservableObject {
     @Published var name: String = "김동준"
-    
-    
+    @Published var isSheetPresetened: Bool = false
+
+    func updateSheet(_ value: Bool) {
+        isSheetPresetened = value
+    }
 }

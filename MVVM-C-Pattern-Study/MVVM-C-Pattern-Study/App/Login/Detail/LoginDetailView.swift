@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginDetailView: View {
     struct Coordinator {
         var navigateToBack: () -> Void
+        var navigateToRoot: () -> Void
     }
 
     var coordinator: Coordinator
@@ -25,6 +26,15 @@ struct LoginDetailView: View {
                 },
                 label: {
                     Text("Navigate To Back")
+                }
+            ).padding()
+            Text("Root 로 navigation")
+            Button(
+                action: {
+                    coordinator.navigateToRoot()
+                },
+                label: {
+                    Text("Navigate To Root")
                 }
             ).padding()
         }

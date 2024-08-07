@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    struct Coordinator {
-        var navigateToBack: () -> Void
-        var navigateToLoginDetail: (String) -> Void
-    }
-
     var coordinator: Coordinator
-    var loginViewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject var loginViewModel: LoginViewModel = LoginViewModel()
 
     var body: some View {
         VStack {
@@ -29,6 +24,27 @@ struct LoginView: View {
             } label: {
                 Text("Go To Login Detail")
             }.padding()
+            Button {
+                loginViewModel.updateSheet(true)
+            } label: {
+                Text("Sheet Toggle Button")
+            }
         }
+        .sheet(
+            isPresented: Binding(get: {loginViewModel.isSheetPresetened}, set: { _ in }), onDismiss: {
+                loginViewModel.updateSheet(false)
+            }
+        ) {
+            VStack{
+                Text("This is Sheet~")
+            }
+        }
+    }
+}
+
+extension LoginView {
+    struct Coordinator {
+        var navigateToBack: () -> Void
+        var navigateToLoginDetail: (String) -> Void
     }
 }

@@ -40,6 +40,7 @@ final class RootCoordinator: Hashable {
 
     func push<V>(_ value: V) where V : Hashable {
         navigationPath.append(value)
+        print("DONGJUN -> Push 하고 난 뒤 , \(navigationPath.count)")
     }
 }
 
@@ -123,6 +124,10 @@ extension RootCoordinator {
             coordinator: .init(
                 navigateToBack: {
                     self.navigationPath.removeLast()
+                }, 
+                navigateToRoot: {
+                    let index = self.navigationPath.count
+                    self.navigationPath.removeLast(index)
                 }
             ),
             loginDetailViewModel: LoginDetailViewModel(name: name)

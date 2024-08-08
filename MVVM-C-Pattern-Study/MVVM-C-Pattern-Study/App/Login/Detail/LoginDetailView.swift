@@ -27,7 +27,7 @@ struct LoginDetailView: View {
                 label: {
                     Text("Navigate To Back")
                 }
-            ).padding()
+            ).padding().frame(width: 300, height: 100).background(.green)
             Text("Root 로 navigation")
             Button(
                 action: {
@@ -36,7 +36,7 @@ struct LoginDetailView: View {
                 label: {
                     Text("Navigate To Root")
                 }
-            ).padding()
+            ).padding().frame(width: 300, height: 100).background(.orange)
         }
     }
 }
